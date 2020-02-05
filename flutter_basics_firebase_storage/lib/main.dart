@@ -85,6 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future uploadMultipleImages() async {
     List<File> _imageList = List();
+    List<String> _imageUrls = List();
 
     _imageList.add(_image);
     _imageList.add(_image);
@@ -110,7 +111,14 @@ class _MyHomePageState extends State<MyHomePage> {
         // Cancel your subscription when done.
         await uploadTask.onComplete;
         streamSubscription.cancel();
+
+        String imageUrl = await storageReference.getDownloadURL();
+        _imageUrls.add(imageUrl); //all all the urls to the list
       }
+      //upload the list of imageUrls to firebase as an array
+      await _firestore.collection("users").document("user1").setData({
+        "arrayOfImages": _imageUrls,
+      });
     } catch (e) {
       print(e);
     }
