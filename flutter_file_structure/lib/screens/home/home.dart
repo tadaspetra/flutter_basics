@@ -11,7 +11,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BLoC Pattern"),
+        title: Text("Example File Structure"),
       ),
       body: Center(
         child: Column(
@@ -24,13 +24,17 @@ class _HomeScreenState extends State<HomeScreen> {
             RaisedButton(
               child: Text("increment"),
               onPressed: () {
-                counter++;
+                setState(() {
+                  counter++;
+                });
               },
             ),
             RaisedButton(
               child: Text("decrement"),
               onPressed: () {
-                counter++;
+                setState(() {
+                  counter--;
+                });
               },
             ),
           ],
