@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_blocpattern/screens/home/bloc/counter_bloc.dart';
+import 'package:flutter_blocpattern/blocs/counter/counter_bloc.dart';
+import 'package:flutter_blocpattern/screens/second/second.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -10,6 +11,18 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Flutter BLoC"),
         centerTitle: true,
+        actions: <Widget>[
+          FlatButton(
+            child: Text("next"),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => SecondScreen(),
+                ),
+              );
+            },
+          )
+        ],
       ),
       body: BlocConsumer(
         bloc: BlocProvider.of<CounterBloc>(context),

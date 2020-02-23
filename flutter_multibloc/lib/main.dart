@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blocpattern/screens/home/bloc/counter_bloc.dart';
+import 'package:flutter_blocpattern/blocs/counter/counter_bloc.dart';
+import 'package:flutter_blocpattern/blocs/random/random_bloc.dart';
 import 'package:flutter_blocpattern/screens/home/home.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,12 +10,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BlocProvider(
-        create: (BuildContext context) {
-          return CounterBloc();
-        },
-        child: HomeScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (BuildContext context) {
+            return CounterBloc();
+          },
+        ),
+        BlocProvider(
+          create: (BuildContext context) {
+            return RandomBloc();
+          },
+        ),
+      ],
+      child: MaterialApp(
+        home: HomeScreen(),
       ),
     );
   }
