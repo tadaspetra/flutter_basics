@@ -1,0 +1,6 @@
+package com.flutter.reference;
+
+import io.flutter.embedding.android.FlutterActivity;
+
+public class MainActivity extends FlutterActivity {
+}
