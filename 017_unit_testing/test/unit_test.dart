@@ -7,48 +7,39 @@ import 'package:unit_testing/services/database.dart';
 class MockDatabase extends Mock implements Database {}
 
 void main() {
-  final MockDatabase mockDatabase = MockDatabase();
-  ListController _list;
+  MockDatabase _mockDatabase = MockDatabase();
+  ListController _listController;
   setUp(() {
-    _list = ListController(database: mockDatabase);
+    _listController = ListController(database: _mockDatabase);
   });
 
   tearDown(() {
-    _list.clear();
+    _listController.clear(); //optional for this scenario
+  });
+  test("Initializes with empty", () {
+    expect(_listController.todoList.length, 0);
   });
 
-  test("Mock Database", () async {
-    when(mockDatabase.loadDatabase())
-        .thenAnswer((_) => Future.value(TodoModel("Mock Database", false)));
-
-    await _list.loadFromDatabase();
-    print("before expect");
-    expect(_list.todoList[0].content, "Mock Database");
+  test("Todo Added", () {
+    _listController.addTodo(TodoModel("Get Groceries", false));
+    expect(_listController.todoList.length, 1);
+    expect(_listController.todoList[0].content, "Get Groceries");
   });
 
-  test("Empty List", () {
-    expect(_list.todoList.length, 0);
+  test("Checkbox Selected", () {
+    _listController.addTodo(TodoModel("Get Groceries", false));
+    expect(_listController.todoList[0].done, false);
+    _listController.checkboxSelected(true, 0);
+    expect(_listController.todoList[0].done, true);
   });
 
-  test("addTodo", () {
-    _list.addTodo(TodoModel("Get groceries", false));
-    expect(_list.todoList.length, 1);
-    expect(_list.todoList[0].content, "Get groceries");
-    expect(_list.todoList[0].done, isNot(true));
-  });
-
-  test("checkboxSelected", () {
-    _list.addTodo(TodoModel("Get groceries", false));
-    expect(_list.todoList[0].done, isNot(true));
-
-    _list.checkboxSelected(true, 0);
-    expect(_list.todoList[0].done, true);
-  });
-
-  test("checkboxSelected", () {
-    _list.addTodo(TodoModel("Get groceries", false));
-    _list.clear();
-
-    expect(_list.todoList.length, 0);
+  test("Mock Database call", () async {
+    when(_mockDatabase.loadDatabase()).thenAnswer(
+      (realInvocation) => Future.value(
+        TodoModel("From Mock", true),
+      ),
+    );
+    await _listController.loadFromDatabase();
+    expect(_listController.todoList[0].content, "From Mock");
   });
 }
