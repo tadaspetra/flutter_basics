@@ -40,10 +40,12 @@ class _HomeState extends State<Home> {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      key: Key("addField"),
                       controller: _todoController,
                     ),
                   ),
                   IconButton(
+                    key: Key("addButton"),
                     icon: Icon(Icons.add),
                     onPressed: () {
                       if (_todoController.text != "") {

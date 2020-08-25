@@ -21,6 +21,5 @@ class ListController {
 
   Future<void> loadFromDatabase() async {
     todoList.add(await database.loadDatabase());
-    print("load from Database Done");
   }
 }
