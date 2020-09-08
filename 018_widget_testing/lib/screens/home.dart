@@ -68,8 +68,8 @@ class _HomeState extends State<Home> {
           RaisedButton(
             key: Key("loadFromDatabase"),
             child: Text("Load Todo from Database"),
-            onPressed: () {
-              listController.loadFromDatabase();
+            onPressed: () async {
+              await listController.loadFromDatabase();
               setState(() {});
             },
           ),
