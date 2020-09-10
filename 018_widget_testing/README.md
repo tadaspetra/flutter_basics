@@ -1,4 +1,4 @@
-# unit_testing
+# widget testing
 
 A new Flutter project.
 
