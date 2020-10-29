@@ -7,27 +7,27 @@ void main() {
   runApp(MyApp());
 }
 
-int computeFunction(int finalNum) {
-  int whileCount = 0;
+void isolateFunction(int finalNum) {
+  int _count = 0;
 
   for (int i = 0; i < finalNum; i++) {
-    whileCount++;
-    if ((whileCount % 88) == 0) {
-      print("compute: " + whileCount.toString());
+    _count++;
+    if ((_count % 100) == 0) {
+      print("isolate: " + _count.toString());
     }
   }
-  return whileCount;
 }
 
-void isolateFunction(int finalNum) {
-  int whileCount = 0;
+int computeFunction(int finalNum) {
+  int _count = 0;
 
   for (int i = 0; i < finalNum; i++) {
-    whileCount++;
-    if ((whileCount % 100) == 0) {
-      print("isolate: " + whileCount.toString());
+    _count++;
+    if ((_count % 100) == 0) {
+      print("compute: " + _count.toString());
     }
   }
+  return _count;
 }
 
 class MyApp extends StatelessWidget {
@@ -81,11 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             RaisedButton(
               child: Text("Add in Isolate"),
-              onPressed: () async {
-                runCompute();
-                setState(() {});
-              },
-            )
+              onPressed: runCompute,
+            ),
           ],
         ),
       ),
