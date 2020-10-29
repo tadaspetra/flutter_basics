@@ -7,6 +7,29 @@ void main() {
   runApp(MyApp());
 }
 
+int computeFunction(int finalNum) {
+  int whileCount = 0;
+
+  for (int i = 0; i < finalNum; i++) {
+    whileCount++;
+    if ((whileCount % 88) == 0) {
+      print("compute: " + whileCount.toString());
+    }
+  }
+  return whileCount;
+}
+
+void isolateFunction(int finalNum) {
+  int whileCount = 0;
+
+  for (int i = 0; i < finalNum; i++) {
+    whileCount++;
+    if ((whileCount % 100) == 0) {
+      print("isolate: " + whileCount.toString());
+    }
+  }
+}
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -29,39 +52,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    runIsolate();
-    runCompute();
+    Isolate.spawn(isolateFunction, 1000);
     super.initState();
   }
 
-  static void isolateFunction(int nothing) {
-    int whileCount = 0;
-
-    for (int i = 0; i < 1000; i++) {
-      whileCount++;
-      if ((whileCount % 100) == 0) {
-        print("isolate: " + whileCount.toString());
-      }
-    }
-  }
-
-  static void computeFunction(int nothing) {
-    int whileCount = 0;
-
-    for (int i = 0; i < 1000; i++) {
-      whileCount++;
-      if ((whileCount % 88) == 0) {
-        print("compute: " + whileCount.toString());
-      }
-    }
-  }
-
-  Future<void> runIsolate() async {
-    Isolate.spawn(isolateFunction, 2);
-  }
-
   Future<void> runCompute() async {
-    compute(computeFunction, 20);
+    count = await compute(computeFunction, 2000);
+    setState(() {});
   }
 
   @override
@@ -77,8 +74,15 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(count.toString()),
             RaisedButton(
               child: Text("Add"),
-              onPressed: () {
+              onPressed: () async {
                 count++;
+                setState(() {});
+              },
+            ),
+            RaisedButton(
+              child: Text("Add in Isolate"),
+              onPressed: () async {
+                runCompute();
                 setState(() {});
               },
             )
