@@ -26,9 +26,21 @@ class _MyAdminState extends State<MyAdmin> with WidgetsBindingObserver {
   }
 
   void _findClient() async {
-    final client = await InvoiceNinjaAdmin.clients.findByEmail(_email);
+    try {
+      final client = await InvoiceNinjaAdmin.clients.findByEmail(_email);
+      print(client.name);
+    } catch (e) {
+      print("Client not found");
+    }
+  }
 
-    print(client.name);
+  void _loadInvoices() async {
+    try {
+      final invoices = await InvoiceNinjaAdmin.invoices.load();
+      print(invoices);
+    } catch (e) {
+      print("Invoice not found");
+    }
   }
 
   @override
@@ -78,6 +90,10 @@ class _MyAdminState extends State<MyAdmin> with WidgetsBindingObserver {
                   OutlineButton(
                     child: Text('Find Client'),
                     onPressed: (_email.isNotEmpty != null) ? () => _findClient() : null,
+                  ),
+                  OutlineButton(
+                    child: Text('Load all Invoices'),
+                    onPressed: () => _loadInvoices(),
                   ),
                 ],
               ),
