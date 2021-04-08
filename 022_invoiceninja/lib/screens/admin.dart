@@ -48,12 +48,6 @@ class _MyAdminState extends State<MyAdmin> with WidgetsBindingObserver {
     if (_invoice == null || state != AppLifecycleState.resumed) {
       return;
     }
-
-    final invoice = await InvoiceNinjaAdmin.invoices.findById(_invoice.id);
-
-    if (invoice.isPaid) {
-      // ...
-    }
   }
 
   @override
