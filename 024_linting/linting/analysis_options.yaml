@@ -8,8 +8,6 @@ analyzer:
     missing_required_param: warning
     # treat missing returns as a warning (not a hint)
     missing_return: warning
-    todo: error
-
 # Rules are in the same order (alphabetically) as documented at http://dart-lang.github.io/linter/lints
 # and https://github.com/dart-lang/linter/blob/master/example/all.yaml
 linter:
