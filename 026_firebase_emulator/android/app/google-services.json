@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "122505945256",
+    "project_id": "test-aa590",
+    "storage_bucket": "test-aa590.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122505945256:android:493347ce692e80427f229d",
+        "android_client_info": {
+          "package_name": "com.example.firebase_emulator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122505945256-upcosulctst05jueb6vqill3a5ojj69i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAErb5OPRMYfRATll_S5Zx7ISsyYT2XPx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122505945256-upcosulctst05jueb6vqill3a5ojj69i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "122505945256-9k73i3cg3fqkpnsts93lpcfmlcv4su57.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.riverpodTemplate"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122505945256:android:4c6b5669726fb1207f229d",
+        "android_client_info": {
+          "package_name": "com.example.riverpod_template"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122505945256-upcosulctst05jueb6vqill3a5ojj69i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAErb5OPRMYfRATll_S5Zx7ISsyYT2XPx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122505945256-upcosulctst05jueb6vqill3a5ojj69i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "122505945256-9k73i3cg3fqkpnsts93lpcfmlcv4su57.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.riverpodTemplate"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
